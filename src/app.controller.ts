@@ -3,14 +3,12 @@ import { AppService } from './app.service';
 import { ConfigService } from '@nestjs/config';
 
 @Controller({
-  path: ''
+  path: '',
 })
-
-@Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private configService: ConfigService
+    private configService: ConfigService,
   ) {}
 
   @Get()

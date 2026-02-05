@@ -10,7 +10,7 @@ export class UserService {
   constructor (@InjectRepository(User) private UserRepo: Repository<User>){}
 
   async create(dto: CreateUserDto) {
-    const user = await this.UserRepo.create(dto);  //we create forst then save, because we have to hash the password
+    const user = await this.UserRepo.create(dto);  //we create first then save, because we have to hash the password. or else it saves the pwd directly
     return await this.UserRepo.save(user)
   }
 

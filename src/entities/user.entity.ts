@@ -1,6 +1,7 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Property } from "./property.entity";
 import * as bcrypt from "bcrypt";
+import { IsOptional, IsUrl } from "class-validator";
 
 @Entity()
 export class User{
@@ -16,8 +17,8 @@ export class User{
     @Column()
     email: string;
 
-    @Column()
-    avatarUrl: string;
+    @Column({nullable:true})
+    avatarUrl?: string;
 
     @CreateDateColumn()
     createdAt: Date;

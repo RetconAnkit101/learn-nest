@@ -5,9 +5,9 @@ import { AppService } from './app.service';
 import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import dbConfig from './config/db.config';
 import dbConfigproduction from './config/db.config.production';
-import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -21,9 +21,10 @@ import { UserController } from './user/user.controller';
       useFactory: 
        dbConfig
     }),
-    UserModule, 
+    UserModule,
+    AuthModule, 
   ],
   controllers: [AppController],
-  providers: [AppService, ],
+  providers: [AppService],
 })
 export class AppModule {}
