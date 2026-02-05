@@ -1,12 +1,13 @@
-
-import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions.js";
+import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 import * as path from "path";
+import { registerAs } from "@nestjs/config";
 
-export default ():PostgresConnectionOptions => ({
-    // url should be in .env
-    url: process.env.url,
+export default registerAs(
+  "dbConfig.env",
+  (): PostgresConnectionOptions => ({
     type: "postgres",
-    port: Number(process.env.port),
-    entities: [path.resolve(__dirname), '..' + '/**/*.entity{.ts,.js}'],  //__dirname is a global variable that can access the whole current directory
-    synchronize: true, // should be false in production
-});
+    url: process.env.url,
+    entities: [path.join(__dirname, "..", "**", "*.entity{.ts,.js}")],
+    synchronize: true,
+  })
+);
