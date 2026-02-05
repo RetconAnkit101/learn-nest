@@ -5,7 +5,7 @@ import { PropertyFactory } from "./property.factory";
 import { UserFactory } from "./user.factory";
 import { MainSeeder } from "./main.seeder";
 import { DataSource } from "typeorm";
-import dbConfig from "src/config/dbConfig";
+import dbConfig from "src/config/db.config";
 
  const options : DataSourceOptions & SeederOptions = {
     ...dbConfig(), 

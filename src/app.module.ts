@@ -4,7 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
-import dbConfig from './config/dbConfig';
+import { UserModule } from './user/user.module';
+import dbConfig from './config/db.config';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import dbConfig from './config/dbConfig';
     PropertyModule,
     TypeOrmModule.forRootAsync({
       useFactory: dbConfig,
-    }), 
+    }),
+    UserModule, 
   ],
   controllers: [AppController],
   providers: [AppService],
