@@ -14,6 +14,10 @@ export class UserService {
     return await this.UserRepo.save(user)
   }
 
+  findAll() {
+    return `This action returns all user`;
+  }
+
   async findByEmail(email:string) {
     return await this.UserRepo.findOne({
       where: {
@@ -22,8 +26,11 @@ export class UserService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    return await this.UserRepo.findOne({
+      where: {id},
+      select: ['firstName','lastName','avatarUrl']
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

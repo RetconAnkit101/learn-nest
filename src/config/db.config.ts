@@ -5,7 +5,7 @@ import { registerAs } from "@nestjs/config";
 export default registerAs(
   'dbConfig.env',
   (): PostgresConnectionOptions => {
-    console.log('process.env.DATABASE_URL =', process.env.DATABASE_URL);
+    // console.log('process.env.DATABASE_URL =', process.env.DATABASE_URL);
 
     return {
       type: 'postgres',
