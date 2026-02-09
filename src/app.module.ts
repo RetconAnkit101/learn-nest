@@ -23,6 +23,7 @@ import dbConfigproduction from './config/db.config.production';
     }),
     UserModule,
     AuthModule, 
+    
   ],
   controllers: [AppController],
   providers: [AppService],
