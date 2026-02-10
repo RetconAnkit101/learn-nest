@@ -9,6 +9,13 @@ import { User } from 'src/entities/user.entity';
 export class UserService {
   constructor (@InjectRepository(User) private UserRepo: Repository<User>){}
 
+  async updateHashedRefreshToken(userId:number, hashedRefreshToken:string){
+    return await this.UserRepo.update(
+      {id:userId},
+      {hashedRefreshToken}
+    )
+  }
+
   async create(dto: CreateUserDto) {
     const user = await this.UserRepo.create(dto);  //we create first then save, because we have to hash the password. or else it saves the pwd directly
     return await this.UserRepo.save(user)
@@ -29,7 +36,7 @@ export class UserService {
   async findOne(id: number) {
     return await this.UserRepo.findOne({
       where: {id},
-      select: ['firstName','lastName','avatarUrl']
+      select: ['firstName','lastName','avatarUrl','hashedRefreshToken']
     });
   }
 
