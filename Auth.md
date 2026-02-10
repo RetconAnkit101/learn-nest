@@ -78,9 +78,9 @@ When someone calls `GET /user/profile` with header `Authorization: Bearer <token
 ```
 Client                    UserController             JwtAuthGuard              JwtStrategy
   |                              |                           |                         |
-  |  GET /user/profile            |                          |                         |
-  |  Authorization: Bearer <JWT>  |                          |                         |
-  |------------------------------>|                          |                         |
+  |  GET /user/profile           |                           |                         |
+  |  Authorization: Bearer <JWT> |                           |                         |
+  |----------------------------->|                           |                         |
   |                              |  UseGuards(JwtAuthGuard)  |                         |
   |                              |-------------------------->|                         |
   |                              |                           |  passport 'jwt'         |
