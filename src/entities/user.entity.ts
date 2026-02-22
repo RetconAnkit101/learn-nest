@@ -2,6 +2,7 @@ import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, 
 import { Property } from "./property.entity";
 import * as bcrypt from "bcrypt";
 import { IsOptional, IsUrl } from "class-validator";
+import { Role } from "src/auth/enums/role.enum";
 
 @Entity()
 export class User{
@@ -25,6 +26,13 @@ export class User{
 
     @Column()
     password:string;
+
+    @Column({
+        type:'enum',
+        enum: Role,
+        default: Role.USER
+    })
+    role:Role
 
     @Column({ nullable: true })
     hashedRefreshToken: string;

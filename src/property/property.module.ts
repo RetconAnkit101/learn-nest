@@ -8,7 +8,6 @@ import { PropertyService } from './property.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Property])],
   controllers: [PropertyController],
-  // providers: [PropertyService],
   providers: [PropertyService, 
     {
       provide: APP_PIPE,

@@ -17,7 +17,6 @@ export class Property{
     @Column({ default: 0 })
     price: number 
 
-    
     @OneToOne(
         ()=> PropertyFeature,
         (PropertyFeature) => PropertyFeature.property,
@@ -25,7 +24,7 @@ export class Property{
     )
     propertyFeature: PropertyFeature
 
-    @ManyToOne(()=> User, (user=> user.properties))
+    @ManyToOne(()=> User, (user)=> user.properties)
     @JoinColumn({ name: 'ownerId'})
     user:User
     
